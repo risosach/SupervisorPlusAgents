@@ -1,0 +1,22 @@
+{
+  "supervisor": {
+    "name": "GenAI Supervisor",
+    "version": "0.1.0",
+    "description": "Supervisor CLI Agent for orchestrating MCP tools"
+  },
+  "tools": {
+    "doc_tool": {
+      "enabled": true
+    },
+    "db_tool": {
+      "enabled": true
+    },
+    "web_tool": {
+      "enabled": true
+    }
+  },
+  "settings": {
+    "log_level": "INFO",
+    "max_retries": 3
+  }
+}
