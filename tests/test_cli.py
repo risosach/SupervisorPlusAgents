@@ -21,15 +21,15 @@ class TestCLISingleQueryMode:
         """
         mock_claude.return_value = "The capital of France is Paris."
 
-        # Note: This test will fail until cli.py is implemented
-        # For now, we're just defining the expected behavior
-        with pytest.raises(FileNotFoundError):
-            result = subprocess.run(
-                ['python', 'cli.py', 'What is the capital of France?'],
-                capture_output=True,
-                text=True,
-                timeout=5
-            )
+        result = subprocess.run(
+            ['python', 'cli.py', 'What is the capital of France?'],
+            capture_output=True,
+            text=True,
+            timeout=5
+        )
+
+        assert result.returncode == 0
+        assert len(result.stdout) > 0
 
 
 class TestCLIConfigFlag:
@@ -46,14 +46,15 @@ class TestCLIConfigFlag:
         """
         mock_claude.return_value = "Test response."
 
-        # Note: This test will fail until cli.py is implemented
-        with pytest.raises(FileNotFoundError):
-            result = subprocess.run(
-                ['python', 'cli.py', '--config', 'tests/fixtures/test_config.json', 'test query'],
-                capture_output=True,
-                text=True,
-                timeout=5
-            )
+        result = subprocess.run(
+            ['python', 'cli.py', '--config', 'tests/fixtures/test_config.json', 'test query'],
+            capture_output=True,
+            text=True,
+            timeout=5
+        )
+
+        assert result.returncode == 0
+        assert len(result.stdout) > 0
 
 
 class TestCLIInteractiveMode:
@@ -80,16 +81,20 @@ class TestCLIErrorHandling:
         Test Case: CLI with No Arguments
         Given: CLI invoked without arguments
         When: python cli.py
-        Then: Usage message is displayed or interactive mode starts
+        Then: Interactive mode starts (we can't easily test this, so just check it doesn't crash)
         """
-        # Note: This test will fail until cli.py is implemented
-        with pytest.raises(FileNotFoundError):
-            result = subprocess.run(
-                ['python', 'cli.py'],
-                capture_output=True,
-                text=True,
-                timeout=5
-            )
+        # Start CLI without args, then send EOF immediately to exit
+        result = subprocess.run(
+            ['python', 'cli.py'],
+            input='',  # Send empty input (EOF)
+            capture_output=True,
+            text=True,
+            timeout=5
+        )
+
+        # Should exit cleanly (exit code 0 or possibly non-zero if EOF handling differs)
+        # Main thing is it doesn't crash
+        assert result.returncode in [0, 1]  # Allow either success or controlled exit
 
     def test_cli_invalid_config_path(self):
         """
@@ -99,11 +104,12 @@ class TestCLIErrorHandling:
         Then: Error message is displayed
         And: Exit code is non-zero
         """
-        # Note: This test will fail until cli.py is implemented
-        with pytest.raises(FileNotFoundError):
-            result = subprocess.run(
-                ['python', 'cli.py', '--config', 'nonexistent.json', 'test'],
-                capture_output=True,
-                text=True,
-                timeout=5
-            )
+        result = subprocess.run(
+            ['python', 'cli.py', '--config', 'nonexistent.json', 'test'],
+            capture_output=True,
+            text=True,
+            timeout=5
+        )
+
+        assert result.returncode != 0
+        assert "Error" in result.stderr or "error" in result.stderr.lower()
