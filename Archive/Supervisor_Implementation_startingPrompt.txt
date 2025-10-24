@@ -1,0 +1,127 @@
+system prompt
+You are a highly skilled, helpful full stack developer who is knowledgable in a range of technologies such as:
+**Back end**
+o  Python
+o  Langchain
+o  Langgraph
+o  Model Context Protocol (MCP)
+o  Opern AI chat completions
+o  GenAI Development tools, cursor, with clause code
+o  ML Flow
+o  langSmith
+**Front End**
+React
+Typescript
+Docker 
+microservices
+
+You are helping to write code in a normal client / server configuration where the back end will be running on (say) 
+
+My preference is to write as much code as reasonable, without being unusual, in python. 
+
+If I start any question with qq, then please answer in a direct, brief and concise way
+
+In all answers don't be sycophant-ey, my ego is fine, I don't need compliments!
+
+Do not necessarily take my directions in my prompts as a hard requirement if you can think of better ways to do things, but please be clear first and get my approval before you diverge from my requests.
+
+note there may be typos in my prompt, eg clause instead of claude...and many others, please allow for this.
+
+Prompt
+
+So ... unfortunately the code base we now have isn't great. I want to completely re-author each component. I want to try doing this outside of the enterprise environment I'm in, but in a way that is easy to then port back into the enterprise environment, so here's the plan:
+1) I want you to research clause code 2.0, using the latest claude 4.5 model
+I don't know much about claude and have never used it, so the first step will be to level me up so I can 
+a) install claude code
+b) have it working with cursor
+c) connect to my digital ocean account -  i already have a droplet from a previous project that I can ssh into, let's use that and connect cursor to it.
+e) I want to follow the flow I have above, step by step, so it will be critical to:
+o  Document the intended architecture for each components. Note, we should use well supported libraries where possible and avoid writing code to implement functions that others already have in libraries we can use. However, we need to ensure we are using well supported, popular libraries, not obscure, too new or too old/unsupported libraries.
+o  Document the user stories it needs to satisfy
+o  create unit tests for each story
+o  create test data for the unit tests
+o  then create the code 
+
+2) Key libraries / components I know I want to use:
+Please have a research phase where you ensure you are familiar with the latest version of all the technologies I want to use.
+a) Langgraph - so each agent in the architecture should be a node in the graph, it should be very easy to add new nodes and change the configuration of the graph
+b) I want each agent to be flexible, so ideally it should get its configuration from a microservice running somewhere
+c) We should publish all tools using Model Context Protocol (MCP), so each of the tools below should be presented as MCP servers
+d) We should follow standard APIs, so use the openAI chat completions interface standard - this will allow others to re-use the supervisor agent.
+e) I want to use docling as my document ingest technology
+f) I don't mind which vector database we use - lets start with something simple like chromadb
+g) for all infrastructure, ultimately we will start on databricks, but we may want to move to use other stacks, eg google vertex or something that is entirely on prem. Therefore we should abstract any underlying technology choices.
+h) security, I want to call each tool by passing on the user's specific permissions. I have no idea how to do this, so will need you to build a decent design. I do know I want to use on-behalf of (OBO) techniques and since I want all tools to be MCP based, we will need a standard way of using OBO with MCP.
+Identity Provider for OBO: The On-Behalf-Of security model is excellent for passing user permissions. However, it relies on an identity provider (IdP) to issue the initial tokens. In your enterprise environment, is this Azure Active Directory (now Entra ID), or something else? Knowing this will be crucial for designing the security architecture correctly.
+Lets base off Azure Active Directory, although I have no clue about this - you'll need to help me ... maybe we just get the supervisor working first, then layer on security after?
+
+i) Model tracing and management - not too sure what to ask for here, how would ML Flow work? Would langsmith also be a good technology ... not too sure how they work...
+
+3) from there start to build each of the 5 modules in the back end:
+a) Module 1 - the supervisor, read below for all the tools this will have to call, but I want a very simple, easy to understand and maintain design pattern, ideally following a published expample from the langchain documentation. I want it to be configurable, so it should get its system prompt from a microservice that calls it and passes its config parameters each time it is called. The intention is, this way, if the client or anyone else needs to tune its behaviour (or change it completely), they can simply change a config file (or database entry) rather than having to edit code. The supervisor should do the following:
+o  It should call an LLM directly if it seems the user's query is a general knowledge query (this behaviour will be part of the system prompt I guess)
+o  if it seems tools are needed, see below for the starting list, it should call them using MCP
+
+the following are fine as stub functions for the moment, we will specify what is needed once the supervisor is working.
+b) Module 2 - document ingest
+Maybe not strictly speaking a module, but something needs to be running to do the following:
+o  Monitor a root directory somewhere - ideally something in onedrive or google drive, whichever is easiest
+o when new documents are written, or documents are modified, they should follow a standard docling ingest flow either writing totally new or updating whatever is int he vector database
+o  we should support standard office doc formats and pdf
+o we should also be able to vectorise any diagrams or images found in documents
+c) Module 3 - document retriever
+d) module 4 - database retriever
+e) Module 5 - web search / deep research
+f) Module 6 - docs summariser
+g) Module 7 - document comparitor
+h) Module 8 - visualiser
+
+4) Front End
+The front end will be react based, using microservices to then call the back end
+
+microservices
+Not too sure what I need here, but at a minimum I guess I need a chat service to call the supervisor. I guess I need another one to keep chat of each users chat history, I'll need a database to store this history. I guess a database also makes sense to store the configuration for the supervisor.
+
+5) Useful links:
+Langgraph, langsmith documentation root: https://docs.langchain.com/
+Lanchain with claude 4.5: https://docs.langchain.com/oss/javascript/langgraph/quickstart
+Model Context Protocol (MCP) https://www.anthropic.com/news/model-context-protocol https://modelcontextprotocol.io/docs/getting-started/intro
+Text to sql std pattern: https://medium.com/google-cloud/architectural-patterns-for-text-to-sql-leveraging-llms-for-enhanced-bigquery-interactions-59756a749e15
+Chat Completions: https://platform.openai.com/docs/api-reference/chat
+MLFlow: https://mlflow.org/docs/3.2.0/
+On Behalf of & oAuth2.0: https://ayende.com/blog/4618/security-models-on-behalf-of & https://www.youtube.com/watch?v=VZH_lGxqFYU
+MCP with OBO: https://medium.com/@khansaima/securing-mcp-tools-with-azure-ad-on-behalf-of-obo-29b1ada1e505
+Claude 4.5 : https://www.anthropic.com/claude/sonnet https://www.anthropic.com/news/claude-sonnet-4-5
+Claude code 2.0 : https://www.claude.com/product/claude-code https://news.ycombinator.com/item?id=45416228 https://www.anthropic.com/news/enabling-claude-code-to-work-more-autonomously
+
+Claude code in cursor: https://www.youtube.com/watch?v=iYiuzAsWnHU
+
+5) My limitations
+I know a reasonable bit of python
+I've previously played with cursor and git, but had help from you and have forgotten most of the details
+I know good engineering practices 
+I know genAI technolgies, but only to describe - I haven't built much
+you can infer from the above that I have a reasonable knowledge, but you also see from my mistakes that some of that is limited
+ 
+So with this ambition and with my limitations, as I say in (1) above. I want to use the latest / best tooling to help as much as possible, so can you digest all of this and start to lay out a set of detailed instructions that will 
+
+Overall ask
+I want you to act as my tutor, guiding me through getting my cursor install up and running again, helping me to understand git again and making all the connections. I don't need you to write code, cursor+claude will do that ... I just want you to help guide me.
+
+1) Help me install Claude Code 2.0 and get it working with git and cursor
+2) Create a new repo, and repo structure that will give me a dev and prod branch
+3) start small, I just want a supervisor to begin with, called even from a command line ... see the above requirement for unit etsts etc.
+... if I get as far as (3) I'll be delighted...we can play it by ear from there. 
+
+Firstly, please ask any clarification questions you need.
+
+
+steps:
+[x] Get connection to dig ocean working
+[ ] connect cursor to a new branch in droplet
+[ ] connect cursor to claude
+[ ] work out test harness - ask chatGPT ... don't want to have to do the uservice first
+[ ] build hello world supervisor - just asks hpt4 a question and returns an answer
+[ ] build a full core supervisor
+[ ] build an MCP tool to act as a calculator
+[ ] build other tools

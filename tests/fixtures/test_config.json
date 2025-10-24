@@ -23,7 +23,8 @@
   "routing_rules": {
     "document_keywords": ["document", "file", "according to", "Q3 Project Plan"],
     "database_keywords": ["database", "accounts", "sales", "how many", "revenue"],
-    "web_keywords": ["news", "latest", "current", "website", "http"]
+    "web_keywords": ["news", "latest", "current", "website", "http"],
+    "harmful_patterns": ["DELETE", "DROP", "TRUNCATE", "ALTER", "GRANT", "REVOKE"]
   },
   "fallback_message": "I'm sorry, I'm not sure how to help with that request."
 }
