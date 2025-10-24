@@ -1,1 +1,3 @@
-"""Test Package for GenAI Supervisor"""
+"""
+Test suite for Supervisor CLI Agent.
+"""
