@@ -1,0 +1,15 @@
+{
+  "system_prompt": "You are a helpful AI assistant with a custom personality.",
+  "tools": {
+    "document_retriever": {
+      "enabled": true,
+      "type": "stub",
+      "url": "http://localhost:5001/mcp",
+      "description": "Retrieves information from internal documents"
+    }
+  },
+  "routing_rules": {
+    "document_keywords": ["document", "file"]
+  },
+  "fallback_message": "Custom fallback message."
+}

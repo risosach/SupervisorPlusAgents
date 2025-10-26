@@ -1,0 +1,35 @@
+# Core dependencies
+# Required for Supervisor CLI Agent (Stage 1 & 2)
+python-dotenv>=1.0.0  # Environment variable loading from .env
+
+# MCP Tool Framework (Stage 2 - Phases 1 & 2)
+fastmcp>=0.2.0  # Document and Database MCP tools
+
+# LLM API Integration (Stage 2 - Phase 4) - Optional
+# Supervisor works without these but LLM routing will be disabled
+anthropic>=0.7.0  # Claude API for intelligent routing
+openai>=1.0.0     # Future hybrid routing support
+
+# Testing
+pytest>=7.0.0       # Test framework
+pytest-mock>=3.10.0 # Mocking utilities
+
+# LangChain Integration (Stage 2 - Phase 5)
+# Required for LangChain AgentExecutor and OpenAI compatibility
+langchain>=0.2.0
+langchain-core>=0.2.0
+langchain-anthropic>=0.1.0
+
+# Optional - Additional LangChain packages (for examples)
+# langchain-openai>=0.1.0
+# langchain-community>=0.2.0
+# langgraph>=0.0.15
+
+# Optional - Data & Storage (for advanced MCP tool implementations)
+# sqlite-utils>=3.36  # SQLite utilities (used in examples)
+# pandas>=2.0.0       # Data manipulation (used in examples)
+
+# Optional - Web & Utilities (for future phases)
+# requests>=2.31.0  # HTTP requests (not currently used)
+# flask>=2.3.0      # Web framework (for API deployment)
+# tqdm>=4.66.0      # Progress bars (not currently used)

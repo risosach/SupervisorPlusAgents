@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tree:*)",
+      "Bash(pytest:*)",
+      "Bash(python:*)",
+      "Bash(awk:*)",
+      "Bash(python cli.py:*)",
+      "Bash(python -m supervisor.cli:*)",
+      "Bash(if exist cli.py del cli.py)",
+      "Bash(pip install:*)",
+      "Bash(find:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

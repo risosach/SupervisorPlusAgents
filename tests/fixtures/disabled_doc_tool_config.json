@@ -1,0 +1,22 @@
+{
+  "system_prompt": "You are a helpful AI assistant.",
+  "tools": {
+    "document_retriever": {
+      "enabled": false,
+      "type": "stub",
+      "url": "http://localhost:5001/mcp",
+      "description": "Retrieves information from internal documents"
+    },
+    "database_query": {
+      "enabled": true,
+      "type": "stub",
+      "url": "http://localhost:5002/mcp",
+      "description": "Queries structured databases"
+    }
+  },
+  "routing_rules": {
+    "document_keywords": ["document", "file", "according to"],
+    "database_keywords": ["database", "accounts"]
+  },
+  "fallback_message": "I'm sorry, I'm not sure how to help with that request."
+}

@@ -1,0 +1,88 @@
+Collecting langchain
+  Downloading langchain-1.0.2-py3-none-any.whl (107 kB)
+     -------------------------------------- 107.8/107.8 kB 6.1 MB/s eta 0:00:00
+Collecting langchain-core
+  Downloading langchain_core-1.0.1-py3-none-any.whl (467 kB)
+     -------------------------------------- 467.1/467.1 kB 7.3 MB/s eta 0:00:00
+Collecting langchain-anthropic
+  Downloading langchain_anthropic-1.0.0-py3-none-any.whl (46 kB)
+     ---------------------------------------- 46.4/46.4 kB ? eta 0:00:00
+Requirement already satisfied: pydantic<3.0.0,>=2.7.4 in c:\users\benso\anaconda3\lib\site-packages (from langchain) (2.12.3)
+Collecting langgraph<1.1.0,>=1.0.0
+  Downloading langgraph-1.0.1-py3-none-any.whl (155 kB)
+     -------------------------------------- 155.4/155.4 kB 4.7 MB/s eta 0:00:00
+Collecting tenacity!=8.4.0,<10.0.0,>=8.1.0
+  Downloading tenacity-9.1.2-py3-none-any.whl (28 kB)
+Requirement already satisfied: typing-extensions<5.0.0,>=4.7.0 in c:\users\benso\anaconda3\lib\site-packages (from langchain-core) (4.15.0)
+Collecting langsmith<1.0.0,>=0.3.45
+  Downloading langsmith-0.4.38-py3-none-any.whl (397 kB)
+     ------------------------------------- 397.3/397.3 kB 12.1 MB/s eta 0:00:00
+Collecting jsonpatch<2.0.0,>=1.33.0
+  Downloading jsonpatch-1.33-py2.py3-none-any.whl (12 kB)
+Requirement already satisfied: pyyaml<7.0.0,>=5.3.0 in c:\users\benso\anaconda3\lib\site-packages (from langchain-core) (6.0)
+Collecting packaging<26.0.0,>=23.2.0
+  Downloading packaging-25.0-py3-none-any.whl (66 kB)
+     ---------------------------------------- 66.5/66.5 kB ? eta 0:00:00
+Requirement already satisfied: anthropic<1.0.0,>=0.69.0 in c:\users\benso\anaconda3\lib\site-packages (from langchain-anthropic) (0.71.0)
+Requirement already satisfied: docstring-parser<1,>=0.15 in c:\users\benso\anaconda3\lib\site-packages (from anthropic<1.0.0,>=0.69.0->langchain-anthropic) (0.17.0)
+Requirement already satisfied: distro<2,>=1.7.0 in c:\users\benso\anaconda3\lib\site-packages (from anthropic<1.0.0,>=0.69.0->langchain-anthropic) (1.9.0)
+Requirement already satisfied: jiter<1,>=0.4.0 in c:\users\benso\anaconda3\lib\site-packages (from anthropic<1.0.0,>=0.69.0->langchain-anthropic) (0.11.1)
+Requirement already satisfied: anyio<5,>=3.5.0 in c:\users\benso\anaconda3\lib\site-packages (from anthropic<1.0.0,>=0.69.0->langchain-anthropic) (4.11.0)
+Requirement already satisfied: sniffio in c:\users\benso\anaconda3\lib\site-packages (from anthropic<1.0.0,>=0.69.0->langchain-anthropic) (1.2.0)
+Requirement already satisfied: httpx<1,>=0.25.0 in c:\users\benso\anaconda3\lib\site-packages (from anthropic<1.0.0,>=0.69.0->langchain-anthropic) (0.28.1)
+Requirement already satisfied: jsonpointer>=1.9 in c:\users\benso\anaconda3\lib\site-packages (from jsonpatch<2.0.0,>=1.33.0->langchain-core) (2.1)
+Collecting langgraph-prebuilt<1.1.0,>=1.0.0
+  Downloading langgraph_prebuilt-1.0.1-py3-none-any.whl (28 kB)
+Collecting langgraph-sdk<0.3.0,>=0.2.2
+  Downloading langgraph_sdk-0.2.9-py3-none-any.whl (56 kB)
+     ---------------------------------------- 56.8/56.8 kB ? eta 0:00:00
+Collecting langgraph-checkpoint<4.0.0,>=2.1.0
+  Downloading langgraph_checkpoint-3.0.0-py3-none-any.whl (46 kB)
+     ---------------------------------------- 46.1/46.1 kB 2.4 MB/s eta 0:00:00
+Collecting xxhash>=3.5.0
+  Downloading xxhash-3.6.0-cp310-cp310-win_amd64.whl (31 kB)
+Requirement already satisfied: requests>=2.0.0 in c:\users\benso\anaconda3\lib\site-packages (from langsmith<1.0.0,>=0.3.45->langchain-core) (2.32.5)
+Collecting orjson>=3.9.14
+  Downloading orjson-3.11.4-cp310-cp310-win_amd64.whl (131 kB)
+     ---------------------------------------- 131.6/131.6 kB ? eta 0:00:00
+Collecting zstandard>=0.23.0
+  Downloading zstandard-0.25.0-cp310-cp310-win_amd64.whl (506 kB)
+     ------------------------------------- 506.1/506.1 kB 10.6 MB/s eta 0:00:00
+Collecting requests-toolbelt>=1.0.0
+  Downloading requests_toolbelt-1.0.0-py2.py3-none-any.whl (54 kB)
+     ---------------------------------------- 54.5/54.5 kB ? eta 0:00:00
+Requirement already satisfied: annotated-types>=0.6.0 in c:\users\benso\anaconda3\lib\site-packages (from pydantic<3.0.0,>=2.7.4->langchain) (0.7.0)
+Requirement already satisfied: typing-inspection>=0.4.2 in c:\users\benso\anaconda3\lib\site-packages (from pydantic<3.0.0,>=2.7.4->langchain) (0.4.2)
+Requirement already satisfied: pydantic-core==2.41.4 in c:\users\benso\anaconda3\lib\site-packages (from pydantic<3.0.0,>=2.7.4->langchain) (2.41.4)
+Requirement already satisfied: idna>=2.8 in c:\users\benso\anaconda3\lib\site-packages (from anyio<5,>=3.5.0->anthropic<1.0.0,>=0.69.0->langchain-anthropic) (3.4)
+Requirement already satisfied: exceptiongroup>=1.0.2 in c:\users\benso\anaconda3\lib\site-packages (from anyio<5,>=3.5.0->anthropic<1.0.0,>=0.69.0->langchain-anthropic) (1.3.0)
+Requirement already satisfied: httpcore==1.* in c:\users\benso\anaconda3\lib\site-packages (from httpx<1,>=0.25.0->anthropic<1.0.0,>=0.69.0->langchain-anthropic) (1.0.9)
+Requirement already satisfied: certifi in c:\users\benso\anaconda3\lib\site-packages (from httpx<1,>=0.25.0->anthropic<1.0.0,>=0.69.0->langchain-anthropic) (2023.5.7)
+Requirement already satisfied: h11>=0.16 in c:\users\benso\anaconda3\lib\site-packages (from httpcore==1.*->httpx<1,>=0.25.0->anthropic<1.0.0,>=0.69.0->langchain-anthropic) (0.16.0)
+Collecting ormsgpack>=1.10.0
+  Downloading ormsgpack-1.11.0-cp310-cp310-win_amd64.whl (112 kB)
+     -------------------------------------- 112.1/112.1 kB 6.4 MB/s eta 0:00:00
+Requirement already satisfied: urllib3<3,>=1.21.1 in c:\users\benso\anaconda3\lib\site-packages (from requests>=2.0.0->langsmith<1.0.0,>=0.3.45->langchain-core) (1.26.14)
+Requirement already satisfied: charset_normalizer<4,>=2 in c:\users\benso\anaconda3\lib\site-packages (from requests>=2.0.0->langsmith<1.0.0,>=0.3.45->langchain-core) (2.0.4)
+Installing collected packages: zstandard, xxhash, tenacity, packaging, ormsgpack, orjson, jsonpatch, requests-toolbelt, langsmith, langgraph-sdk, langchain-core, langgraph-checkpoint, langchain-anthropic, langgraph-prebuilt, langgraph, langchain
+  Attempting uninstall: zstandard
+    Found existing installation: zstandard 0.19.0
+    Uninstalling zstandard-0.19.0:
+      Successfully uninstalled zstandard-0.19.0
+  Attempting uninstall: tenacity
+    Found existing installation: tenacity 8.0.1
+    Uninstalling tenacity-8.0.1:
+      Successfully uninstalled tenacity-8.0.1
+  Attempting uninstall: packaging
+    Found existing installation: packaging 22.0
+    Uninstalling packaging-22.0:
+      Successfully uninstalled packaging-22.0
+  Attempting uninstall: jsonpatch
+    Found existing installation: jsonpatch 1.32
+    Uninstalling jsonpatch-1.32:
+      Successfully uninstalled jsonpatch-1.32
+  Attempting uninstall: requests-toolbelt
+    Found existing installation: requests-toolbelt 0.9.1
+    Uninstalling requests-toolbelt-0.9.1:
+      Successfully uninstalled requests-toolbelt-0.9.1
+Successfully installed jsonpatch-1.33 langchain-1.0.2 langchain-anthropic-1.0.0 langchain-core-1.0.1 langgraph-1.0.1 langgraph-checkpoint-3.0.0 langgraph-prebuilt-1.0.1 langgraph-sdk-0.2.9 langsmith-0.4.38 orjson-3.11.4 ormsgpack-1.11.0 packaging-25.0 requests-toolbelt-1.0.0 tenacity-9.1.2 xxhash-3.6.0 zstandard-0.25.0

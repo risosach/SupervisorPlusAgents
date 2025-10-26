@@ -1,0 +1,65 @@
+{
+  "system_prompt": "You are a helpful AI assistant that provides accurate, concise answers. You have access to internal documents, databases, and web search capabilities. Always provide clear, well-structured responses.",
+  "tools": {
+    "document_retriever": {
+      "enabled": true,
+      "type": "stub",
+      "url": "http://localhost:5001/mcp",
+      "description": "Retrieves information from internal documents stored in SharePoint"
+    },
+    "database_query": {
+      "enabled": true,
+      "type": "stub",
+      "url": "http://localhost:5002/mcp",
+      "description": "Queries structured databases using natural language (text-to-SQL)"
+    },
+    "web_search": {
+      "enabled": true,
+      "type": "stub",
+      "url": "http://localhost:5003/mcp",
+      "description": "Searches the web for current information and latest news"
+    }
+  },
+  "routing_rules": {
+    "document_keywords": [
+      "document",
+      "file",
+      "according to",
+      "Q3 Project Plan",
+      "design doc",
+      "specification",
+      "policy",
+      "guideline"
+    ],
+    "database_keywords": [
+      "database",
+      "accounts",
+      "sales",
+      "how many",
+      "revenue",
+      "query",
+      "records",
+      "total",
+      "count"
+    ],
+    "web_keywords": [
+      "news",
+      "latest",
+      "current",
+      "website",
+      "http",
+      "search",
+      "recent",
+      "today"
+    ],
+    "harmful_patterns": [
+      "DELETE",
+      "DROP",
+      "TRUNCATE",
+      "ALTER",
+      "GRANT",
+      "REVOKE"
+    ]
+  },
+  "fallback_message": "I'm sorry, I'm not sure how to help with that request. Could you please rephrase your question or provide more details?"
+}

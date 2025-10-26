@@ -1,0 +1,7 @@
+{
+  "tools": {
+    "document_retriever": {
+      "enabled": true
+    }
+  }
+}
